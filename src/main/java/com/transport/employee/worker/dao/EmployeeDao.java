@@ -8,9 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.transport.employee.worker.model.Employee;
 import com.transport.employee.worker.repository.EmployeeRepository;
 
-@Repository
-public class EmployeeDao {
+import jakarta.transaction.Transactional;
 
+@Repository
+@Transactional(rollbackOn = Exception.class)
+public class EmployeeDao{ 
+	
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
@@ -18,5 +21,20 @@ public class EmployeeDao {
 	public List<Employee> getAllEmployees(){
 		final List<Employee> allEmployees = employeeRepository.findAll();
 		return allEmployees;
+	}
+
+
+	public Employee getEmployeeById(Long id) {
+		
+		return employeeRepository.findById(id).orElse(null);
+	}
+
+
+	public Employee getEmployeeByName(String name) {
+		return employeeRepository.findByName(name).orElse(null);
+	}
+
+	public List<Employee> createEmployee(List<Employee> employeeDto) {
+		return employeeRepository.saveAll(employeeDto);
 	}
 }

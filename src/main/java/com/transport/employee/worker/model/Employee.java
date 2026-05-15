@@ -3,6 +3,7 @@ package com.transport.employee.worker.model;
 import java.time.LocalDate;
 
 import com.transport.employee.worker.dto.EmployeeDto;
+import com.transport.employee.worker.utility.AppUtility;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -58,6 +59,9 @@ public class Employee {
 	
 	@Column(name = "isActive", columnDefinition = "BOOLEAN DEFAULT TRUE")
 	private boolean isActive;
+	
+	@Column(name = "uniqueId", nullable = false, columnDefinition = "VARCHAR(255) DEFAULT 'UNIQUE_ID'")
+	public String uniqueId;
 	
 	@Column(name = "isDeleted", columnDefinition = "BOOLEAN DEFAULT FALSE")
 	private boolean isDeleted;
@@ -118,6 +122,11 @@ public class Employee {
 		if(employee.getCreatedAt() != null)
 		this.createdAt = employee.getCreatedAt();
 	
+		if(employee.getUniqueId() != null) {
+			this.uniqueId = employee.getUniqueId();
+		}else {
+			this.uniqueId = AppUtility.uniqueId();
+		}
 	}
 	
 	public Integer getId() {
@@ -222,6 +231,14 @@ public class Employee {
 
 	public void setPanNumber(String panNumber) {
 		this.panNumber = panNumber;
+	}
+
+	public String getUniqueId() {
+		return uniqueId;
+	}
+
+	public void setUniqueId(String uniqueId) {
+		this.uniqueId = uniqueId;
 	}
 
 	public boolean isActive() {

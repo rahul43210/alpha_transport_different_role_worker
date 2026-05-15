@@ -44,6 +44,12 @@ public class EmployeeDto {
 	private boolean isDeleted;
 
 	private LocalDate createdAt;
+	
+	private String uniqueId;
+
+	public EmployeeDto() {
+		super();
+	}
 
 	public EmployeeDto(Employee employee) {
 		super();
@@ -63,6 +69,7 @@ public class EmployeeDto {
 		this.isActive = employee.isActive();
 		this.isDeleted = employee.isDeleted();
 		this.createdAt = employee.getCreatedAt();
+		this.uniqueId = employee.getUniqueId();
 
 	}
 
@@ -194,4 +201,13 @@ public class EmployeeDto {
 		this.createdAt = createdAt;
 	}
 
+	public String getUniqueId() {
+		return uniqueId;
+	}
+
+	public void setUniqueId(String uniqueId) {
+		this.uniqueId = uniqueId;
+	}
+
+	
 }
