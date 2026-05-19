@@ -17,4 +17,6 @@ public interface EmployeeService {
 
 	List<EmployeeDto> updateEmployees(List<EmployeeDto> employeeDto);
 
+	List<EmployeeDto> findListOfEmployeesByDepoId(String depoId);
+
 }

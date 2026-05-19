@@ -10,5 +10,7 @@ import com.transport.employee.worker.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
 	Optional<Employee> findByName(String name);
+	
+	List<Employee> findAllByDepoId(String depoId);
  
 }

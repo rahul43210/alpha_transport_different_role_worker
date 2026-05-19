@@ -42,4 +42,9 @@ public class EmployeeDao{
 	public Employee getEmployeeById(Integer id) {
 		return employeeRepository.findById(id.longValue()).orElse(null);
 	}
+
+
+	public List<Employee> findListOfEmployeesByDepoId(String depoId) {
+		return employeeRepository.findAllByDepoId(depoId);
+	}
 }

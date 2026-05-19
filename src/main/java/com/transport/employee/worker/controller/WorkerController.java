@@ -1,8 +1,10 @@
 package com.transport.employee.worker.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,6 +82,17 @@ public class WorkerController {
 			return new AppResponseMessageDto<>(HttpStatus.BAD_REQUEST.value(), "Failed to update employee", employeeDto);
 		}else {
 			return new AppResponseMessageDto<List<EmployeeDto>>(HttpStatus.ACCEPTED.value(), "Employee updated successfully", updateEmployees);
+		}
+	}
+	
+	
+	@GetMapping("/depo/{depoId}")
+	public List<EmployeeDto> findListOfEmployeesByDepoId(@PathVariable String depoId){
+		final List<EmployeeDto> listOfEmployeesByDepoId = employeeService.findListOfEmployeesByDepoId(depoId);
+		if(listOfEmployeesByDepoId == null || listOfEmployeesByDepoId.isEmpty()) {
+			return new ArrayList<>();
+		}else {
+			return listOfEmployeesByDepoId;
 		}
 	}
 	

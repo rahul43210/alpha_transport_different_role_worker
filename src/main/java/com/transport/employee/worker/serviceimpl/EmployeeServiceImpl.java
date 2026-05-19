@@ -111,4 +111,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeUpdate;
 	}
 
+	@Override
+	public List<EmployeeDto> findListOfEmployeesByDepoId(String depoId) {
+		final List<Employee> listOfEmployeesByDepoId = employeeDao.findListOfEmployeesByDepoId(depoId);
+		return listOfEmployeesByDepoId.stream().map(e -> new EmployeeDto(e)).collect(Collectors.toList());
+	}
+
 }
