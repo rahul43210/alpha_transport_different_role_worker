@@ -2,6 +2,7 @@ package com.transport.employee.worker.dto;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.transport.employee.worker.model.Employee;
 
 import jakarta.validation.constraints.NotBlank;
@@ -46,6 +47,11 @@ public class EmployeeDto {
 	private LocalDate createdAt;
 	
 	private String uniqueId;
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private String errorMessage;
+	
+	private String depoId;
 
 	public EmployeeDto() {
 		super();
@@ -70,7 +76,7 @@ public class EmployeeDto {
 		this.isDeleted = employee.isDeleted();
 		this.createdAt = employee.getCreatedAt();
 		this.uniqueId = employee.getUniqueId();
-
+		this.depoId = employee.getDepoId();
 	}
 
 	public Integer getId() {
@@ -207,6 +213,22 @@ public class EmployeeDto {
 
 	public void setUniqueId(String uniqueId) {
 		this.uniqueId = uniqueId;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	public String getDepoId() {
+		return depoId;
+	}
+
+	public void setDepoId(String depoId) {
+		this.depoId = depoId;
 	}
 
 	

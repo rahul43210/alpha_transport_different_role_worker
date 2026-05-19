@@ -15,4 +15,6 @@ public interface EmployeeService {
 
 	List<EmployeeDto> createEmployee(List<EmployeeDto> employeeDto);
 
+	List<EmployeeDto> updateEmployees(List<EmployeeDto> employeeDto);
+
 }

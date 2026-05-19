@@ -68,6 +68,9 @@ public class Employee {
 	
 	@Column(name = "createdAt")
 	private LocalDate createdAt;
+	
+	@Column(name = "depoId", unique = true, nullable = false)
+	private String depoId;
 
 	public Employee() {
 		super();
@@ -127,6 +130,8 @@ public class Employee {
 		}else {
 			this.uniqueId = AppUtility.uniqueId();
 		}
+		
+		this.depoId = employee.getDepoId();
 	}
 	
 	public Integer getId() {
@@ -263,6 +268,14 @@ public class Employee {
 
 	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public String getDepoId() {
+		return depoId;
+	}
+
+	public void setDepoId(String depoId) {
+		this.depoId = depoId;
 	}
 	
 	

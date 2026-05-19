@@ -37,4 +37,9 @@ public class EmployeeDao{
 	public List<Employee> createEmployee(List<Employee> employeeDto) {
 		return employeeRepository.saveAll(employeeDto);
 	}
+
+
+	public Employee getEmployeeById(Integer id) {
+		return employeeRepository.findById(id.longValue()).orElse(null);
+	}
 }
